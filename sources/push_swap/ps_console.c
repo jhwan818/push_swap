@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:12:57 by junghwle          #+#    #+#             */
-/*   Updated: 2023/05/31 13:40:11 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:56:15 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ static int	ps_select_action(t_stack *stack_a, t_stack *stack_b, t_op input)
 void	ps_console(t_stack *stack_a, t_stack *stack_b)
 {
 	ps_show_stack(stack_a, stack_b);
-	printf("\n");
+	ft_printf("\n");
 	while (ps_select_action(stack_a, stack_b, ps_get_input()) != -1)
 	{
 		ps_show_stack(stack_a, stack_b);
-		printf("\n");
+		ft_printf("\n");
 	}
 	ps_show_stack(stack_a, stack_b);
 }
