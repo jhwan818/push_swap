@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:12:42 by junghwle          #+#    #+#             */
-/*   Updated: 2023/05/31 13:43:56 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:17:59 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void	ps_free_staks(t_stack *stack_a, t_stack *stack_b)
 	ft_stack_clear(stack_b);
 	free(stack_a);
 	free(stack_b);
+}
+
+void	ps_err_exit(void)
+{
 	ft_putstr_fd("Error", STDERR);
 	exit(EXIT_FAILURE);
 }
@@ -48,7 +52,8 @@ int	main(int ac, char **av)
 	if (ps_parse_input(stack_a, ac, av) == ERR)
 		ps_free_staks(stack_a, stack_b);
 	ps_sort(stack_a, stack_b);
-	ps_console(stack_a, stack_b);
+	//ps_console(stack_a, stack_b);
+	ps_show_stack(stack_a, stack_b);
 	ps_free_staks(stack_a, stack_b);
 	return (0);
 }

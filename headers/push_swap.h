@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:44:22 by junghwle          #+#    #+#             */
-/*   Updated: 2023/05/31 13:45:43 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:50:32 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,19 @@ typedef char			t_op;
 # define RRR 11
 
 void	ps_free_staks(t_stack *stack_a, t_stack *stack_b);
+void	ps_err_exit(void);
 
 int		ps_parse_input(t_stack *stack_a, int ac, char **av);
 
-int		ps_action(t_stack *stack_a, t_stack *stack_b, t_op op);
-int		ps_swap(t_stack *stack);
+char	*ps_action(t_stack *stack_a, t_stack *stack_b, t_op op);
+void	ps_swap(t_stack *stack);
 int		ps_push(t_stack *stack_dst, t_stack *stack_src);
-int		ps_rotate(t_stack *stack);
-int		ps_reverse_rotate(t_stack *stack);
+void	ps_rotate(t_stack *stack);
+void	ps_reverse_rotate(t_stack *stack);
 
 char	*ps_sort(t_stack *stack_a, t_stack *stack_b);
 
 void	ps_console(t_stack *stack_a, t_stack *stack_b);
-void	ps_show_stack(t_stack *stack, t_stack *stack_b);
+void	ps_show_stack(t_stack *stack_a, t_stack *stack_b);
 
 #endif
