@@ -1,0 +1,26 @@
+.
+├─sources
+│  ├─data_structure
+│  │  ├─dcll
+│  │  │  ├─ft_dcll_add.c
+│  │  │  ├─ft_dcll_clear.c
+│  │  │  ├─ft_dcll_init.c
+│  │  │  ├─ft_dcll_newnode.c
+│  │  │  ├─ft_dcll_peek.c
+│  │  │  └─ft_dcll_pop.c
+│  │  └─stack
+│  │      └─ft_stack.c
+│  └─push_swap
+│      ├─ps_action.c
+│      ├─ps_push.c
+│      ├─ps_reverse_rotate.c
+│      ├─ps_rotate.c
+│      ├─ps_swap.c
+│      ├─ps_parse_input.c
+│      ├─ps_show_stack.c
+│      ├─ps_sort.c
+│      └─push_swap.c
+└─headers
+    ├─ft_dcll.h
+    ├─ft_stack.h
+    └─push_swap.h
