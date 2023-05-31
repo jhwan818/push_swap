@@ -6,7 +6,7 @@
 #    By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 22:00:29 by junghwle          #+#    #+#              #
-#    Updated: 2023/05/31 13:48:21 by junghwle         ###   ########.fr        #
+#    Updated: 2023/05/31 13:50:49 by junghwle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,7 +105,7 @@ fclean: clean
 
 re: fclean all
 
-push:
+push: fclean
 	git add .
 	git commit -m "update"
 	git push
