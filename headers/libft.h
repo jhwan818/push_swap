@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:33:17 by junghwle          #+#    #+#             */
-/*   Updated: 2023/05/31 11:58:06 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/01 22:04:34 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*Personal libft*/
 int		ft_abs(int n);
+int		ft_max(int a, int b);
+int		ft_min(int a, int b);
 
 #endif

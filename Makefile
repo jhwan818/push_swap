@@ -6,7 +6,7 @@
 #    By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 22:00:29 by junghwle          #+#    #+#              #
-#    Updated: 2023/05/31 14:54:18 by junghwle         ###   ########.fr        #
+#    Updated: 2023/06/02 01:26:48 by junghwle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ STACK_SRC=ft_stack.c ft_stack2.c
 PUSH_SWAP_SRC=ps_action.c			ps_push.c			ps_reverse_rotate.c	\
 			  ps_rotate.c			ps_swap.c			ps_parse_input.c	\
 			  ps_show_stack.c		ps_sort.c			push_swap.c			\
-			  ps_console.c
+			  ps_console.c					ps_calculate_op.c				\
+			  ps_calculate_rotation.c		ps_sort_three.c					\
+			  ps_insert.c
 LIBFT_SRC=ft_atoi.c					ft_bzero.c			ft_calloc.c			\
 	  	  ft_isalnum.c				ft_isalpha.c		ft_isascii.c		\
 		  ft_isdigit.c				ft_isprint.c	  	ft_itoa.c			\
@@ -42,7 +44,7 @@ LIBFT_SRC=ft_atoi.c					ft_bzero.c			ft_calloc.c			\
 		  ft_lstadd_front_bonus.c	ft_lstsize_bonus.c	ft_lstlast_bonus.c	\
 		  ft_lstadd_back_bonus.c	ft_lstdelone_bonus.c					\
 		  ft_lstclear_bonus.c		ft_lstiter_bonus.c	ft_lstmap_bonus.c	\
-		  ft_abs.c
+		  ft_abs.c					ft_max.c			ft_min.c
 FT_PRINTF_SRC=ft_print_format_bonus.c		ft_putstr_bonus.c				\
 			  ft_printf_bonus.c				ft_putchar_bonus.c				\
 			  ft_getdecimal_bonus.c			ft_gethexa_low_bonus.c			\
@@ -92,8 +94,14 @@ $(OBJDIR)/%.o: $(FT_PRINTF_DIR)/%.c
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-test: all
-	./$(NAME) 1 5 4 3 7 8 2 6 9 10
+test: all rand
+	echo $(shell cat output.txt)
+	./push_swap $(shell cat output.txt)
+	./push_swap $(shell cat output.txt) | wc -l
+	rm output.txt
+
+rand:
+	./random $(ARG) > output.txt
 
 clean:
 	rm -fv *.c
@@ -110,5 +118,5 @@ push: fclean
 	git commit -m "update"
 	git push
 
-.PHONY: all clean fclean re test push
+.PHONY: all clean fclean re test push rand
 .SILENT:

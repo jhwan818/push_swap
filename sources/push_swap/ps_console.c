@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:12:57 by junghwle          #+#    #+#             */
-/*   Updated: 2023/05/31 13:56:15 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/02 00:34:07 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ static void	ps_print_description(void)
 	ft_printf("SA  = %d\t\t", SA);
 	ft_printf("SB  = %d\t\t", SB);
 	ft_printf("SS  = %d\n", SS);
-	ft_printf("PA  = %d\t\t", PA);
-	ft_printf("PB  = %d\n", PB);
 	ft_printf("RA  = %d\t\t", RA);
 	ft_printf("RB  = %d\t\t", RB);
 	ft_printf("RR  = %d\n", RR);
 	ft_printf("RRA = %d\t\t", RRA);
-	ft_printf("RRB = %d\t", RRB);
+	ft_printf("RRB = %d\t\t", RRB);
 	ft_printf("RRR = %d\n", RRR);
+	ft_printf("PA  = %d\t", PA);
+	ft_printf("PB  = %d\n", PB);
 }
 
 static t_op	ps_get_input(void)

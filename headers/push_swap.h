@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:44:22 by junghwle          #+#    #+#             */
-/*   Updated: 2023/05/31 15:50:32 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/02 00:34:09 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,49 @@ typedef char			t_op;
 # define SA 1
 # define SB 2
 # define SS 3
-# define PA 4
-# define PB 5
-# define RA 6
-# define RB 7
-# define RR 8
-# define RRA 9
-# define RRB 10
-# define RRR 11
+# define RA 4
+# define RB 5
+# define RR 6
+# define RRA 7
+# define RRB 8
+# define RRR 9
+# define PA 10
+# define PB 11
 
-void	ps_free_staks(t_stack *stack_a, t_stack *stack_b);
-void	ps_err_exit(void);
+void		ps_free_staks(t_stack *stack_a, t_stack *stack_b);
+void		ps_err_exit(void);
 
-int		ps_parse_input(t_stack *stack_a, int ac, char **av);
+int			ps_parse_input(t_stack *stack_a, t_stack *stack_b, \
+		int ac, char **av);
 
-char	*ps_action(t_stack *stack_a, t_stack *stack_b, t_op op);
-void	ps_swap(t_stack *stack);
-int		ps_push(t_stack *stack_dst, t_stack *stack_src);
-void	ps_rotate(t_stack *stack);
-void	ps_reverse_rotate(t_stack *stack);
+void		ps_action(t_stack *stack_a, t_stack *stack_b, t_op op);
+void		ps_swap(t_stack *stack);
+void		ps_push(t_stack *stack_dst, t_stack *stack_src);
+void		ps_rotate(t_stack *stack);
+void		ps_reverse_rotate(t_stack *stack);
 
-char	*ps_sort(t_stack *stack_a, t_stack *stack_b);
+typedef struct s_status
+{
+	int		max;
+	int		min;
+	size_t	pos;
+	int		op;
+}						t_status;
 
-void	ps_console(t_stack *stack_a, t_stack *stack_b);
-void	ps_show_stack(t_stack *stack_a, t_stack *stack_b);
+void		ps_sort_three(t_stack *stack_a, t_stack *stack_b);
+void		ps_sort(t_stack *stack_a, t_stack *stack_b);
+t_status	ps_calculate_op(t_stack_n *node_a, t_stack_n *node_b, \
+		t_status status, int deep);
+t_status	ps_calculate_op_rev(t_stack_n *node_a, t_stack_n *node_b, \
+		t_status status, int deep);
+int			ps_calculate_rotation1(t_stack_n *node_b, int max);
+int			ps_calculate_rotation2(int nb, t_stack_n *node_b);
+void		insert2(t_stack *stack_a, t_stack *stack_b, \
+		t_status *status, int min);
+void		insert1(t_stack *stack_a, t_stack *stack_b, \
+		t_status *status, int min);
+
+void		ps_console(t_stack *stack_a, t_stack *stack_b);
+void		ps_show_stack(t_stack *stack_a, t_stack *stack_b);
 
 #endif
