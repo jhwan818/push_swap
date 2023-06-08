@@ -6,61 +6,49 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:14:57 by junghwle          #+#    #+#             */
-/*   Updated: 2023/05/31 11:57:50 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/05 17:22:17 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_fillarg(char *s, int n)
+static int	ft_len(int nb)
 {
-	int	i;
-	int	neg;
+	int	len;
 
-	i = 0;
-	neg = 0;
-	if (n < 0)
-		neg = 1;
-	while (n != 0)
+	len = 1;
+	if (nb < 0)
+		len++;
+	while (nb > 9 || nb < -9)
 	{
-		s[i++] = ft_abs(n % 10) + '0';
-		n /= 10;
+		len++;
+		nb /= 10;
 	}
-	if (neg)
-		s[i++] = '-';
-	s[i] = '\0';
-	return (s);
+	return (len);
 }
 
-static char	*ft_reverse(char *s)
+void	ft_itoa_rec(char *ret, int nb, int *i)
 {
-	int		i;
-	int		j;
-	char	tmp;
-
-	i = 0;
-	j = ft_strlen(s) - 1;
-	while (i < j)
-	{
-		tmp = s[i];
-		s[i] = s[j];
-		s[j] = tmp;
-		i++;
-		j--;
-	}
-	return (s);
+	if (nb > 9 || nb < -9)
+		ft_itoa_rec(ret, nb / 10, i);
+	ret[(*i)++] = ft_abs(nb % 10) + '0';
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int nb)
 {
+	int		len;
 	char	*ret;
+	int		i;
 
-	if (n == 0)
-		return (ft_strdup("0"));
-	ret = (char *)malloc(sizeof(char) * 12);
-	if (ret == NULL)
-		return (NULL);
-	ret = ft_fillarg(ret, n);
-	ret = ft_reverse(ret);
+	len = ft_len(nb);
+	ret = (char *)malloc(sizeof(char) * (len + 1));
+	if (ret != NULL)
+	{
+		i = 0;
+		if (nb < 0)
+			ret[i++] = '-';
+		ft_itoa_rec(ret, nb, &i);
+		ret[i] = '\0';
+	}
 	return (ret);
 }

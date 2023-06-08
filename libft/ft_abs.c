@@ -6,15 +6,13 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 11:56:21 by junghwle          #+#    #+#             */
-/*   Updated: 2023/05/31 11:56:55 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/05 17:15:17 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_abs(int n)
 {
 	if (n < 0)
-		return (n * -1);
+		return (~n + 1);
 	return (n);
 }

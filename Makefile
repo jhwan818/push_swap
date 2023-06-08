@@ -6,45 +6,45 @@
 #    By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 22:00:29 by junghwle          #+#    #+#              #
-#    Updated: 2023/06/02 01:26:48 by junghwle         ###   ########.fr        #
+#    Updated: 2023/06/09 01:20:03 by junghwle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=push_swap
 
-SRCDIR=sources
+SRCDIR=srcs
+OBJDIR=objs
 DCLL_DIR=$(SRCDIR)/data_structure/dcll
 STACK_DIR=$(SRCDIR)/data_structure/stack
 PUSH_SWAP_DIR=$(SRCDIR)/push_swap
 LIBFT_DIR=libft
 FT_PRINTF_DIR=ft_printf
 
-OBJDIR=objects
-DCLL_SRC=ft_dcll_add.c	ft_dcll_clear.c	ft_dcll_init.c	ft_dcll_newnode.c	\
-		 ft_dcll_peek.c	ft_dcll_pop.c
+DCLL_SRC=ft_dcll_add.c			ft_dcll_clear.c			ft_dcll_init.c		\
+		 ft_dcll_newnode.c		ft_dcll_peek.c			ft_dcll_pop.c		\
+		 ft_dcll_to_arr.c
 STACK_SRC=ft_stack.c ft_stack2.c
-PUSH_SWAP_SRC=ps_action.c			ps_push.c			ps_reverse_rotate.c	\
-			  ps_rotate.c			ps_swap.c			ps_parse_input.c	\
-			  ps_show_stack.c		ps_sort.c			push_swap.c			\
-			  ps_console.c					ps_calculate_op.c				\
-			  ps_calculate_rotation.c		ps_sort_three.c					\
-			  ps_insert.c
-LIBFT_SRC=ft_atoi.c					ft_bzero.c			ft_calloc.c			\
-	  	  ft_isalnum.c				ft_isalpha.c		ft_isascii.c		\
-		  ft_isdigit.c				ft_isprint.c	  	ft_itoa.c			\
-		  ft_memchr.c				ft_memcmp.c			ft_memcpy.c			\
-		  ft_memmove.c				ft_memset.c			ft_putchar_fd.c		\
-		  ft_putendl_fd.c			ft_putnbr_fd.c		ft_putstr_fd.c		\
-		  ft_split.c				ft_strchr.c			ft_strdup.c			\
-		  ft_striteri.c				ft_strjoin.c		ft_strlcat.c		\
-		  ft_strlcpy.c				ft_strlen.c			ft_strmapi.c		\
-		  ft_strncmp.c				ft_strnstr.c		ft_strrchr.c		\
-		  ft_strtrim.c				ft_substr.c			ft_tolower.c		\
-		  ft_toupper.c				ft_lstnew_bonus.c						\
-		  ft_lstadd_front_bonus.c	ft_lstsize_bonus.c	ft_lstlast_bonus.c	\
-		  ft_lstadd_back_bonus.c	ft_lstdelone_bonus.c					\
-		  ft_lstclear_bonus.c		ft_lstiter_bonus.c	ft_lstmap_bonus.c	\
-		  ft_abs.c					ft_max.c			ft_min.c
+PUSH_SWAP_SRC=ps_action.c         ps_reverse_rotate.c ps_swap.c				\
+			  ps_console.c        ps_rotate.c         ps_sort.c				\
+			  ps_parse_input.c    ps_show_stack.c     push_swap.c			\
+			  ps_push.c			  ps_divide_chunk.c	  ps_quick_sort.c		\
+			  ps_set_chunk.c	  ps_sort_len2.c	  ps_place_chunk_top.c
+LIBFT_SRC=ft_abs.c                ft_lstmap_bonus.c       ft_strdup.c		\
+		  ft_atoi.c               ft_lstnew_bonus.c       ft_striteri.c		\
+		  ft_bzero.c              ft_lstsize_bonus.c      ft_strjoin.c		\
+		  ft_calloc.c             ft_max.c                ft_strlcat.c		\
+		  ft_isalnum.c            ft_memchr.c             ft_strlcpy.c		\
+		  ft_isalpha.c            ft_memcmp.c             ft_strlen.c		\
+		  ft_isascii.c            ft_memcpy.c             ft_strmapi.c		\
+		  ft_isdigit.c            ft_memmove.c            ft_strncmp.c		\
+		  ft_isprint.c            ft_memset.c             ft_strnstr.c		\
+		  ft_itoa.c               ft_min.c                ft_strrchr.c		\
+		  ft_lstadd_back_bonus.c  ft_putchar_fd.c         ft_strtrim.c		\
+		  ft_lstadd_front_bonus.c ft_putendl_fd.c         ft_substr.c		\
+		  ft_lstclear_bonus.c     ft_putnbr_fd.c          ft_tolower.c		\
+		  ft_lstdelone_bonus.c    ft_putstr_fd.c          ft_toupper.c		\
+		  ft_lstiter_bonus.c      ft_split.c              ft_strchr.c		\
+		  ft_lstlast_bonus.c	  ft_merge_sort.c		  ft_realloc.c
 FT_PRINTF_SRC=ft_print_format_bonus.c		ft_putstr_bonus.c				\
 			  ft_printf_bonus.c				ft_putchar_bonus.c				\
 			  ft_getdecimal_bonus.c			ft_gethexa_low_bonus.c			\
@@ -61,38 +61,46 @@ PUSH_SWAP_OBJ=$(patsubst %.c, $(OBJDIR)/%.o, $(PUSH_SWAP_SRC))
 LIBFT_OBJ=$(patsubst %.c, $(OBJDIR)/%.o, $(LIBFT_SRC))
 FT_PRINTF_OBJ=$(patsubst %.c, $(OBJDIR)/%.o, $(FT_PRINTF_SRC))
 OBJS=$(DCLL_OBJ) $(STACK_OBJ) $(PUSH_SWAP_OBJ) $(LIBFT_OBJ) $(FT_PRINTF_OBJ)
+DEPS=$(patsubst %.o, %.d, $(OBJS))
 
+INCLUDE=-I$(DCLL_DIR) -I$(STACK_DIR) -I$(PUSH_SWAP_DIR) -I$(LIBFT_DIR)		\
+		-I$(FT_PRINTF_DIR)
 CC=cc
-FLAGS=-Wall -Werror -Wextra -Iheaders
+CFLAGS=-Wall -Werror -Wextra
+DEPFLAGS=-MMD
+COMPILE.c=$(CC) $(DEPFLAGS) $(CFLAGS) $(INCLUDE) -c -o
 
-all: $(OBJDIR) $(NAME)
+all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJDIR) $(OBJS)
 	$(CC) $(FLAGS) -o $@ $(OBJS)
 	echo "CREATE $@"
 
 $(OBJDIR)/%.o: $(DCLL_DIR)/%.c
-	$(CC) $(FLAGS) -c -o $@ $<
+	$(COMPILE.c) $@ $<
 	echo "COMPILING (DCLL) $@"
 
 $(OBJDIR)/%.o: $(STACK_DIR)/%.c
-	$(CC) $(FLAGS) -c -o $@ $<
+	$(COMPILE.c) $@ $<
 	echo "COMPILING (STACK) $@"
 
 $(OBJDIR)/%.o: $(PUSH_SWAP_DIR)/%.c
-	$(CC) $(FLAGS) -c -o $@ $<
+	$(COMPILE.c) $@ $<
 	echo "COMPILING (PUSH_SWAP) $@"
 
 $(OBJDIR)/%.o: $(LIBFT_DIR)/%.c
-	$(CC) $(FLAGS) -c -o $@ $<
+	$(COMPILE.c) $@ $<
 	echo "COMPILING (LIBFT) $@"
 
 $(OBJDIR)/%.o: $(FT_PRINTF_DIR)/%.c
-	$(CC) $(FLAGS) -c -o $@ $<
+	$(COMPILE.c) $@ $<
 	echo "COMPILING (FT_PRINTF) $@"
 
 $(OBJDIR):
-	mkdir -p $(OBJDIR)
+	mkdir -p $@
+
+sort: all
+	./push_swap 2 7 4 5 1 9 3 8 0 6
 
 test: all rand
 	echo $(shell cat output.txt)
@@ -104,8 +112,6 @@ rand:
 	./random $(ARG) > output.txt
 
 clean:
-	rm -fv *.c
-	rm -fv *.h
 	rm -rfv $(OBJDIR)
 
 fclean: clean
@@ -117,6 +123,8 @@ push: fclean
 	git add .
 	git commit -m "update"
 	git push
+
+-include $(DEPS)
 
 .PHONY: all clean fclean re test push rand
 .SILENT:
