@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:44:22 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/09 01:17:50 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:16:24 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_buff
 	size_t	maxlen;
 }	t_buff;
 
-typedef	struct s_chunk
+typedef struct s_chunk
 {
 	int		*arr;
 	size_t	min_i;
@@ -83,10 +83,8 @@ void	ps_quick_sort_a(t_stack *stack_a, t_stack *stack_b, \
 		t_chunk chunk, t_buff *buff);
 void	ps_quick_sort_b(t_stack *stack_a, t_stack *stack_b, \
 		t_chunk chunk, t_buff *buff);
-void	ps_place_chunk_top_a(t_stack *stack_a, t_stack *stack_b, \
-		t_chunk chunk, t_buff *buff);
-void	ps_place_chunk_top_b(t_stack *stack_a, t_stack *stack_b, \
-		t_chunk chunk, t_buff *buff);
+void	ps_place_chunk_top(t_stack *stack_a, t_stack *stack_b, \
+		t_chunk *chunk, t_buff *buff);
 void	ps_sort_len2_a(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
 void	ps_sort_len2_b(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
 

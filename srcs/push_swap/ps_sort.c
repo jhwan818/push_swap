@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 15:09:25 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/09 01:25:32 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:12:40 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ void	ps_sort(t_stack *stack_a, t_stack *stack_b)
 
 	ps_init_chunk(&chunk, stack_a);
 	buff.b = (char *)malloc(sizeof(char) * stack_a->size * 100);
+	if (buff.b == NULL)
+		ps_err_exit(stack_a, stack_b);
 	buff.curlen = 0;
 	buff.maxlen = stack_a->size * 100;
 	ps_quick_sort_a(stack_a, stack_b, chunk, &buff);
 	ft_printf("%s", buff.b);
+	free(buff.b);
 }

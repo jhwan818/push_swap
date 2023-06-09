@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:12:42 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/09 01:12:18 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:15:54 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	ps_err_exit(t_stack *stack_a, t_stack *stack_b)
 	exit(EXIT_FAILURE);
 }
 
-/*Debugging Main*/
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
@@ -54,8 +53,6 @@ int	main(int ac, char **av)
 	if (ps_parse_input(stack_a, stack_b, ac, av) == ERR)
 		ps_err_exit(stack_a, stack_b);
 	ps_sort(stack_a, stack_b);
-	//ps_console(stack_a, stack_b);
-	//ps_show_stack(stack_a, stack_b);
 	ps_free_stacks(stack_a, stack_b);
 	return (0);
 }

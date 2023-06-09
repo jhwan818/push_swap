@@ -6,7 +6,7 @@
 #    By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 22:00:29 by junghwle          #+#    #+#              #
-#    Updated: 2023/06/09 01:20:03 by junghwle         ###   ########.fr        #
+#    Updated: 2023/06/09 21:09:24 by junghwle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,13 +100,16 @@ $(OBJDIR):
 	mkdir -p $@
 
 sort: all
-	./push_swap 2 7 4 5 1 9 3 8 0 6
+	./push_swap $(shell cat output.txt)
 
 test: all rand
 	echo $(shell cat output.txt)
 	./push_swap $(shell cat output.txt)
 	./push_swap $(shell cat output.txt) | wc -l
+	./push_swap $(shell cat output.txt) | ./checker_Mac $(shell cat output.txt)
 	rm output.txt
+
+ARG=100
 
 rand:
 	./random $(ARG) > output.txt
@@ -120,9 +123,11 @@ fclean: clean
 re: fclean all
 
 push: fclean
-	git add .
-	git commit -m "update"
-	git push
+	cp $(DCLL_DIR)/* ../push_swap
+	cp $(STACK_DIR)/* ../push_swap
+	cp $(PUSH_SWAP_DIR)/* ../push_swap
+	cp -r $(LIBFT_DIR) ../push_swap
+	cp $(FT_PRINTF_DIR)/* ../push_swap
 
 -include $(DEPS)
 

@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:12:36 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/09 01:21:02 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:13:53 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ char	*ps_action2(t_stack *stack_a, t_stack *stack_b, t_op op)
 	else
 		return (ps_action3(stack_a, stack_b, op));
 }
-
 
 static char	*ps_action3(t_stack *stack_a, t_stack *stack_b, t_op op)
 {
