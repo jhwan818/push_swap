@@ -6,7 +6,7 @@
 #    By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 22:00:29 by junghwle          #+#    #+#              #
-#    Updated: 2023/06/09 21:09:24 by junghwle         ###   ########.fr        #
+#    Updated: 2023/06/09 21:56:05 by junghwle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,12 @@ DCLL_SRC=ft_dcll_add.c			ft_dcll_clear.c			ft_dcll_init.c		\
 		 ft_dcll_newnode.c		ft_dcll_peek.c			ft_dcll_pop.c		\
 		 ft_dcll_to_arr.c
 STACK_SRC=ft_stack.c ft_stack2.c
-PUSH_SWAP_SRC=ps_action.c         ps_reverse_rotate.c ps_swap.c				\
-			  ps_console.c        ps_rotate.c         ps_sort.c				\
-			  ps_parse_input.c    ps_show_stack.c     push_swap.c			\
-			  ps_push.c			  ps_divide_chunk.c	  ps_quick_sort.c		\
-			  ps_set_chunk.c	  ps_sort_len2.c	  ps_place_chunk_top.c
+PUSH_SWAP_SRC=ps_action.c          ps_quick_sort.c      ps_sort_chunk.c		\
+			  ps_console.c         ps_reverse_rotate.c  ps_sort_len2.c		\
+			  ps_divide_chunk.c    ps_rotate.c          ps_sort_len3.c		\
+			  ps_parse_input.c     ps_set_chunk.c       ps_swap.c			\
+			  ps_place_chunk_top.c ps_show_stack.c      push_swap.c			\
+			  ps_push.c            ps_sort.c            
 LIBFT_SRC=ft_abs.c                ft_lstmap_bonus.c       ft_strdup.c		\
 		  ft_atoi.c               ft_lstnew_bonus.c       ft_striteri.c		\
 		  ft_bzero.c              ft_lstsize_bonus.c      ft_strjoin.c		\
@@ -109,7 +110,7 @@ test: all rand
 	./push_swap $(shell cat output.txt) | ./checker_Mac $(shell cat output.txt)
 	rm output.txt
 
-ARG=100
+ARG=30
 
 rand:
 	./random $(ARG) > output.txt

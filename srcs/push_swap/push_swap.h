@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:44:22 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/09 21:16:24 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:53:27 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,23 @@ void	ps_quick_sort_b(t_stack *stack_a, t_stack *stack_b, \
 		t_chunk chunk, t_buff *buff);
 void	ps_place_chunk_top(t_stack *stack_a, t_stack *stack_b, \
 		t_chunk *chunk, t_buff *buff);
+
+void	ps_sort_chunk_a(t_stack *stack_a, t_stack *stack_b, \
+		size_t len, t_buff *buff);
+void	ps_sort_chunk_b(t_stack *stack_a, t_stack *stack_b, \
+		size_t len, t_buff *buff);
+void	ps_sort_len2(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
 void	ps_sort_len2_a(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
 void	ps_sort_len2_b(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
+void	ps_sort_len3(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
+void	ps_sort_len3_a(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
+void	ps_sort_len3_b(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
+void	ps_sort_len4(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
+void	ps_sort_len4_a(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
+void	ps_sort_len4_b(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
+void	ps_sort_len5(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
+void	ps_sort_len5_a(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
+void	ps_sort_len5_b(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
 
 void	ps_console(t_stack *stack_a, t_stack *stack_b);
 void	ps_show_stack(t_stack *stack_a, t_stack *stack_b);
