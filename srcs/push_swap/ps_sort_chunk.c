@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:20:00 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/09 23:00:16 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/12 22:05:05 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ps_sort_chunk_a(t_stack *stack_a, t_stack *stack_b, \
 		ps_sort_len2_a(stack_a, stack_b, buff);
 	else if (len == 3)
 	{
+		ps_sort_len3_a(stack_a, stack_b, buff);
 		ps_sort_len3_a(stack_a, stack_b, buff);
 		ps_sort_len3_a(stack_a, stack_b, buff);
 	}

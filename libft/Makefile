@@ -6,7 +6,7 @@
 #    By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/03 14:32:42 by junghwle          #+#    #+#              #
-#    Updated: 2023/06/09 00:24:30 by junghwle         ###   ########.fr        #
+#    Updated: 2023/06/12 23:25:20 by junghwle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS=ft_abs.c                ft_lstlast_bonus.c      ft_strdup.c		\
 	 ft_lstclear_bonus.c     ft_putstr_fd.c          ft_tolower.c		\
 	 ft_lstdelone_bonus.c    ft_split.c              ft_toupper.c		\
 	 ft_lstiter_bonus.c      ft_strchr.c			 ft_max.c			\
-	 ft_min.c				 ft_merge_sort.c		 ft_realloc.c
+	 ft_min.c				 ft_merge_sort.c		 ft_realloc.c		\
+	 ft_str_isequal.c
 OBJS=$(patsubst %.c, $(OBJDIR)/%.o, $(SRCS))
 DEPS=$(OBJS:.o=.d)
 

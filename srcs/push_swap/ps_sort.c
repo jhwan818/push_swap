@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 15:09:25 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/09 21:12:40 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/12 23:52:43 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,27 @@ static void	ps_init_chunk(t_chunk *chunk, t_stack *stack)
 	chunk->pv2 = chunk->arr[(chunk->len * 2) / 3];
 }
 
+static void ps_sort_short(t_stack *stack_a, t_stack *stack_b, t_buff *buff)
+{
+	if (stack_a->size == 2)
+		ps_sort_len2(stack_a, stack_b, buff);
+	else if (stack_a->size == 3)
+		ps_sort_len3(stack_a, stack_b, buff);
+}
+
 void	ps_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	t_chunk	chunk;
 	t_buff	buff;
 
 	ps_init_chunk(&chunk, stack_a);
-	buff.b = (char *)malloc(sizeof(char) * stack_a->size * 100);
-	if (buff.b == NULL)
-		ps_err_exit(stack_a, stack_b);
+	buff.b[0] = '\0';
 	buff.curlen = 0;
 	buff.maxlen = stack_a->size * 100;
-	ps_quick_sort_a(stack_a, stack_b, chunk, &buff);
-	ft_printf("%s", buff.b);
-	free(buff.b);
+	if (chunk.len <= 3)
+		ps_sort_short(stack_a, stack_b, &buff);
+	else
+		ps_quick_sort_a(stack_a, stack_b, chunk, &buff);
+	if (ps_flush_buff(buff.b) == -1)
+		ps_err_exit(stack_a, stack_b);
 }

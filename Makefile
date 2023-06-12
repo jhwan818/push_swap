@@ -6,7 +6,7 @@
 #    By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 22:00:29 by junghwle          #+#    #+#              #
-#    Updated: 2023/06/09 21:56:05 by junghwle         ###   ########.fr        #
+#    Updated: 2023/06/12 23:28:05 by junghwle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ PUSH_SWAP_SRC=ps_action.c          ps_quick_sort.c      ps_sort_chunk.c		\
 			  ps_divide_chunk.c    ps_rotate.c          ps_sort_len3.c		\
 			  ps_parse_input.c     ps_set_chunk.c       ps_swap.c			\
 			  ps_place_chunk_top.c ps_show_stack.c      push_swap.c			\
-			  ps_push.c            ps_sort.c            
+			  ps_push.c            ps_sort.c            ps_issorted.c		\
+			  ps_flush_buff.c
 LIBFT_SRC=ft_abs.c                ft_lstmap_bonus.c       ft_strdup.c		\
 		  ft_atoi.c               ft_lstnew_bonus.c       ft_striteri.c		\
 		  ft_bzero.c              ft_lstsize_bonus.c      ft_strjoin.c		\
@@ -45,7 +46,8 @@ LIBFT_SRC=ft_abs.c                ft_lstmap_bonus.c       ft_strdup.c		\
 		  ft_lstclear_bonus.c     ft_putnbr_fd.c          ft_tolower.c		\
 		  ft_lstdelone_bonus.c    ft_putstr_fd.c          ft_toupper.c		\
 		  ft_lstiter_bonus.c      ft_split.c              ft_strchr.c		\
-		  ft_lstlast_bonus.c	  ft_merge_sort.c		  ft_realloc.c
+		  ft_lstlast_bonus.c	  ft_merge_sort.c		  ft_realloc.c		\
+		  ft_str_isequal.c
 FT_PRINTF_SRC=ft_print_format_bonus.c		ft_putstr_bonus.c				\
 			  ft_printf_bonus.c				ft_putchar_bonus.c				\
 			  ft_getdecimal_bonus.c			ft_gethexa_low_bonus.c			\
@@ -108,9 +110,8 @@ test: all rand
 	./push_swap $(shell cat output.txt)
 	./push_swap $(shell cat output.txt) | wc -l
 	./push_swap $(shell cat output.txt) | ./checker_Mac $(shell cat output.txt)
-	rm output.txt
 
-ARG=30
+ARG=500
 
 rand:
 	./random $(ARG) > output.txt

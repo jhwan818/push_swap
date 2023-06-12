@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:33:17 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/09 00:24:00 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/12 23:26:35 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 void	ft_merge_sort(int *arr, int start, int end);
 void	*ft_realloc(void *p, size_t oldsize, size_t newsize);
+int		ft_str_isequal(const char *s1, const char *s2);
 
 #endif
