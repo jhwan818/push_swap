@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 23:01:04 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/12 23:28:39 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/13 18:19:17 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,15 @@ static void	print_buff(char **buff_elem)
 int	ps_flush_buff(const char *buffer)
 {
 	char	**buff_elem;
+	size_t	i;
 
 	buff_elem = ft_split(buffer, '\n');
 	if (buff_elem == NULL)
 		return (-1);
 	print_buff(buff_elem);
+	i = 0;
+	while (buff_elem[i] != NULL)
+		free(buff_elem[i++]);
+	free(buff_elem);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:44:22 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/12 23:42:54 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/13 18:47:01 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef char			t_op;
 
 typedef struct s_buff
 {
-	char	b[20000];
+	char	*b;
 	size_t	curlen;
 	size_t	maxlen;
 }	t_buff;
@@ -99,11 +99,7 @@ void	ps_sort_len3(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
 void	ps_sort_len3_a(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
 void	ps_sort_len3_b(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
 void	ps_sort_len4(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
-void	ps_sort_len4_a(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
-void	ps_sort_len4_b(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
 void	ps_sort_len5(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
-void	ps_sort_len5_a(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
-void	ps_sort_len5_b(t_stack *stack_a, t_stack *stack_b, t_buff *buff);
 
 int		ps_flush_buff(const char *buffer);
 
