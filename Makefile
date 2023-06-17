@@ -6,7 +6,7 @@
 #    By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 22:00:29 by junghwle          #+#    #+#              #
-#    Updated: 2023/06/13 18:52:43 by junghwle         ###   ########.fr        #
+#    Updated: 2023/06/17 18:54:38 by junghwle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,8 +66,25 @@ FT_PRINTF_OBJ=$(patsubst %.c, $(OBJDIR)/%.o, $(FT_PRINTF_SRC))
 OBJS=$(DCLL_OBJ) $(STACK_OBJ) $(PUSH_SWAP_OBJ) $(LIBFT_OBJ) $(FT_PRINTF_OBJ)
 DEPS=$(patsubst %.o, %.d, $(OBJS))
 
+####BONUS PART####
+BONUS_NAME=checker
+CHECKER_DIR=$(SRCDIR)/checker
+GNL_DIR=$(SRCDIR)/get_next_line
+
+BONUS_PS_SRC=ps_parse_input.c		ps_action.c		ps_swap.c				\
+			 ps_push.c				ps_rotate.c		ps_reverse_rotate.c		\
+			 ps_issorted.c
+CHECKER_SRC=checker.c		ch_sort.c
+GNL_SRC=get_next_line.c		get_next_line_utils.c
+BONUS_PS_OBJ=$(patsubst %.c, $(OBJDIR)/%.o, $(BONUS_PS_SRC))
+CHECKER_OBJ=$(patsubst %.c, $(OBJDIR)/%.o, $(CHECKER_SRC))
+GNL_OBJ=$(patsubst %.c, $(OBJDIR)/%.o, $(GNL_SRC))
+BONUS_OBJS=$(BONUS_PS_OBJ) $(CHECKER_OBJ) $(GNL_OBJ) $(DCLL_OBJ) $(STACK_OBJ) \
+		   $(LIBFT_OBJ) $(FT_PRINTF_OBJ)
+##################
+
 INCLUDE=-I$(DCLL_DIR) -I$(STACK_DIR) -I$(PUSH_SWAP_DIR) -I$(LIBFT_DIR)		\
-		-I$(FT_PRINTF_DIR)
+		-I$(FT_PRINTF_DIR) -I$(CHECKER_DIR) -I$(GNL_DIR)
 CC=cc
 CFLAGS=-Wall -Werror -Wextra
 DEPFLAGS=-MMD
@@ -99,28 +116,44 @@ $(OBJDIR)/%.o: $(FT_PRINTF_DIR)/%.c
 	$(COMPILE.c) $@ $<
 	echo "COMPILING (FT_PRINTF) $@"
 
+$(OBJDIR)/%.o: $(CHECKER_DIR)/%.c
+	$(COMPILE.c) $@ $<
+	echo "COMPILING (CHECKER) $@"
+
+$(OBJDIR)/%.o: $(GNL_DIR)/%.c
+	$(COMPILE.c) $@ $<
+	echo "COMPILING (GET_NEXT_LINE) $@"
+
 $(OBJDIR):
 	mkdir -p $@
+
+bonus: all $(BONUS_NAME) 
+
+$(BONUS_NAME): $(OBJDIR) $(BONUS_OBJS)
+	$(CC) $(FLAGS) -o $@ $(BONUS_OBJS)
+	echo "CREATE $@"
 
 sort: all
 	./push_swap $(shell cat output.txt)
 
 test: all rand
-	echo $(shell cat output.txt)
-	#./push_swap $(shell cat output.txt)
-	./push_swap $(shell cat output.txt) | wc -l
-	./push_swap $(shell cat output.txt) | ./checker_Mac $(shell cat output.txt)
+	./test.sh
 
-ARG=1000
+bonus_test: all bonus rand
+	./test.sh
+	./test_bonus.sh
+
+NBR=500
 
 rand:
-	./random $(ARG) > output.txt
+	./random $(NBR) > output.txt
 
 clean:
 	rm -rfv $(OBJDIR)
 
 fclean: clean
 	rm -fv $(NAME)
+	rm -fv $(BONUS_NAME)
 
 re: fclean all
 

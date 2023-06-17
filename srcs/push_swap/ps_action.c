@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:12:36 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/12 23:00:56 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/17 18:07:19 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ char	*ps_action(t_stack *stack_a, t_stack *stack_b, t_op op, t_buff *buff)
 	char	*op_char;
 
 	op_char = ps_action2(stack_a, stack_b, op);
-	ft_strlcat(&buff->b[buff->curlen], op_char, 5);
-	buff->curlen += ft_strlen(op_char);
+	if (buff != NULL)
+	{
+		ft_strlcat(&buff->b[buff->curlen], op_char, 5);
+		buff->curlen += ft_strlen(op_char);
+	}
 	return (op_char);
 }
 

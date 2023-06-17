@@ -6,11 +6,11 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:12:42 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/13 19:21:43 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/17 18:12:29 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 static int	ps_initialize_stacks(t_stack **stack_a, t_stack **stack_b)
 {
@@ -52,7 +52,11 @@ int	main(int ac, char **av)
 		ps_err_exit(stack_a, stack_b);
 	if (ps_parse_input(stack_a, stack_b, ac, av) == ERR)
 		ps_err_exit(stack_a, stack_b);
-	ps_sort(stack_a, stack_b);
+	ch_sort(stack_a, stack_b);
+	if (ps_issorted_a(stack_a, stack_a->size) && stack_b->size == 0)
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 	ps_free_stacks(stack_a, stack_b);
 	return (0);
 }

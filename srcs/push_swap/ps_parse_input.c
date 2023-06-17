@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:13:19 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/13 19:21:38 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/17 18:54:17 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,25 @@ static void	*ft_atoi_check(t_stack *stack_b, char *nba)
 	return (ft_stack_push(stack_b, (int)nb));
 }
 
+static int	ps_check_rep(t_stack *stack_b)
+{
+	size_t		i;
+	int			nb;
+	t_stack_n	*node;
+
+	node = ft_stack_peek(stack_b);
+	nb = node->nb;
+	i = 1;
+	while (i < stack_b->size)
+	{
+		node = node->next;
+		if (node->nb == nb)
+			return (ERR);
+		i++;
+	}
+	return (0);
+}
+
 static int	ps_push_numbers(t_stack *stack_b, char **split)
 {
 	int	i;
@@ -57,32 +76,14 @@ static int	ps_push_numbers(t_stack *stack_b, char **split)
 			ret = ERR;
 			break ;
 		}
-		free(split[i]);
-		i++;
+		free(split[i++]);
+		if (ps_check_rep(stack_b) == ERR)
+			return (ERR);
 	}
 	while (split[i] != NULL)
 		free(split[i++]);
 	free(split);
 	return (ret);
-}
-
-int	ps_check_rep(t_stack *stack_b)
-{
-	size_t		i;
-	int			nb;
-	t_stack_n	*node;
-
-	node = ft_stack_peek(stack_b);
-	nb = node->nb;
-	i = 1;
-	while (i < stack_b->size)
-	{
-		node = node->next;
-		if (node->nb == nb)
-			return (ERR);
-		i++;
-	}
-	return (0);
 }
 
 int	ps_parse_input(t_stack *stack_a, t_stack *stack_b, int ac, char **av)
@@ -93,12 +94,12 @@ int	ps_parse_input(t_stack *stack_a, t_stack *stack_b, int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
+		if (av[i][0] == '\0')
+			return (ERR);
 		split = ft_split(av[i], ' ');
 		if (split == NULL)
 			return (ERR);
 		if (ps_push_numbers(stack_b, split) == ERR)
-			return (ERR);
-		if (ps_check_rep(stack_b) == ERR)
 			return (ERR);
 		i++;
 	}
