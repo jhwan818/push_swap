@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 22:22:10 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/12 22:56:45 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/17 16:33:54 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ps_issorted_a(t_stack *stack_a, size_t len)
 	return (1);
 }
 
-int ps_issorted_b(t_stack *stack_b, size_t len)
+int	ps_issorted_b(t_stack *stack_b, size_t len)
 {
 	t_stack_n	*node;
 	size_t		i;
@@ -45,4 +45,3 @@ int ps_issorted_b(t_stack *stack_b, size_t len)
 	}
 	return (1);
 }
-

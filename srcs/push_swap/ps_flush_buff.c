@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 23:01:04 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/13 18:19:17 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/17 16:33:33 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static int	is_rrr(const char *s1, const char *s2)
 		return (1);
 	return (0);
 }
-
 
 static void	print_buff(char **buff_elem)
 {

@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:13:19 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/01 18:43:26 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:21:38 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ static int	ps_push_numbers(t_stack *stack_b, char **split)
 	ret = 0;
 	while (split[i] != NULL)
 	{
+		if (split[i][0] == '\0')
+		{
+			i++;
+			continue ;
+		}
 		if (ft_atoi_check(stack_b, split[i]) == NULL)
 		{
 			ret = ERR;

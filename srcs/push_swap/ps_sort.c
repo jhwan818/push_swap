@@ -6,7 +6,7 @@
 /*   By: junghwle <junghwle@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 15:09:25 by junghwle          #+#    #+#             */
-/*   Updated: 2023/06/13 18:51:15 by junghwle         ###   ########.fr       */
+/*   Updated: 2023/06/17 16:35:33 by junghwle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ps_init_chunk(t_chunk *chunk, t_stack *stack)
 	chunk->pv2 = chunk->arr[(chunk->len * 2) / 3];
 }
 
-static void ps_sort_short(t_stack *stack_a, t_stack *stack_b, t_buff *buff)
+static void	ps_sort_short(t_stack *stack_a, t_stack *stack_b, t_buff *buff)
 {
 	if (stack_a->size == 2)
 		ps_sort_len2(stack_a, stack_b, buff);
